@@ -13,7 +13,7 @@ fn create_trivial() -> Encoder {
     Encoder::new(cog1, cog2, cog3, wires)
 }
 fn create_random() -> Encoder {
-
+    create_trivial()
 }
 
 #[test]
@@ -23,14 +23,21 @@ fn no_mutate_1() {
     assert_eq!(encoder.encode(&str), String::from("Hello world")); 
 }
 
+#[test]
 fn no_mutate_2() {
     let encoder = create_trivial(); 
     let str = String::from("blah blah blah"); 
     assert_eq!(encoder.encode(&str), String::from("blah blah blah")); 
 }
 
-fn same_output() {
+#[test]
+fn same_output_1() {
     let encoder = create_trivial(); 
     let str = String::from("Hello world"); 
     assert_eq!(encoder.encode(&str), encoder.encode(&str)); 
+}
+
+#[test]
+fn same_output_2() {
+    
 }
